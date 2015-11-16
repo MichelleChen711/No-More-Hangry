@@ -1,14 +1,14 @@
-# Love Me Meow
+#No More Hangry
 
 ##Overview
 
-Having trouble finding the kitty of your dreams? Love Me Meow matches you with potential cats up for adoption who are looking for furrever homes and a human to love.
+Nowadays, people are plagued with the question: "what do I want to eat?". Sites like Seamless and GrubHub gives us too many choices and too many steps. " No More Hangry has the solution. Introducing the new food app that makes decisions easier. We don't know what we want to eat until we see the exact item and the exact price. Agreed? 
 
-Instead of pages and pages of kitties to choose from (decisions, decisions...), we provide a detailed purrsonalized profile of the kitty you're matched with and choices to adopt, donate, give a heart, or share on Facebook.    
+No More Hangry eliminates the top down search structure: food catergory to a restaurant to a food item in the restaurant. 
+By showing the food item first, No More Hangry focuses on the more important factor of what entree looks good and its price. 
 
-In our simple short quiz-like interface, we match your answers to the perfect cat that is looking for love from someone like you. Ensuring that the kitty you see is the kitty you'll love, Love Me Meow collects information on you and your preferred kitty: your location, time availability, home size, perferred feline personality, gender, size, age, coat length, and more.  
+Create an account, save your address, payment details, preferences once and No More Hangry will do the rest. For example, an image of a delicious entree under $10 from a restaurant with at least 3 stars will be displayed to you. Dont like it? Refresh the page to see another entree. If you are satisfied with the current entree, all you have to do is hit a button and the food is on its way to your doorstep.
 
-You can add your favorite cats to a list, view a history of all the profiles you have been matched with, donate to adoption organizations, and view success stories    
 
 ##Data Model
 ```javascript
