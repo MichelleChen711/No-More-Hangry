@@ -27,15 +27,19 @@ var User = new mongoose.Schema({
 	address: {type: String, required: true},
 	paymentType: {type: String, required: true},
 	maxPrice: {type: Number, required: false},
-	minRating: {type: Number, required: false}
+	minRating: {type: Number, required: false},
+	foodItems: [FoodItem]
 });
 var FoodItem = new mongoose.Schema({
 	image: {type: String, required: false},
 	name: {type: String, required: true},
 	price: {type: Number, required: true},
 	rating: {type: Number, required: true},
+	numRatings: {type: Number, required: true},
 	type: {type: String, required: true},
-	restaurant: {type: String, required: true}
+	restaurant: {type: String, required: true},
+	numViews: {type: Number, required: true},
+	numOrders: {type: Number, required: true}
 });
 var Order = new mongoose.Schema({
 	user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
