@@ -49,4 +49,4 @@ var Order = new mongoose.Schema({
 ```
 
 ##Wireframes
-![list create](img/list-create.png)
+![wire frames](img/wireframes.png)
