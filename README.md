@@ -2,12 +2,12 @@
 
 ##Overview
 
-Nowadays, people are plagued with the question: "what do I want to eat?". Sites like Seamless and GrubHub give us too many choices and too many steps. " No More Hangry has the solution. Introducing the new food app that makes decisions easier. 
+Nowadays, people are plagued with the question: "what do I want to eat?" Sites like Seamless and GrubHub give us too many choices and too many steps. " No More Hangry has the solution. Introducing the new food app that makes decisions easier! 
 
 If we are asked if we want Mexican food, chances are, we aren't so sure. But, if we are asked if we want a steak burrito for 5 dollars then decision is much easier. We don't know what we want to eat until we see the exact item and the exact price. Agreed? 
 
-No More Hangry eliminates the top down search structure: food catergory to a restaurant to a food item in the restaurant. 
-By showing the food item first, No More Hangry focuses on the more important factor of what entree looks good and its price. 
+No More Hangry eliminates the top down search structure of selecting a food catergory, then a restaurant of that food catergory, then a food item in that restaurant. 
+By showing the food item first, No More Hangry focuses on the more deciding factors: what entree looks good and its price. 
 
 Create an account, save your address, payment details, preferences once and No More Hangry will do the rest. For example, an image of a delicious entree under $10 with at least 3 stars will be displayed to you. Dont like it? Refresh the page to see another entree. If you are satisfied with the current entree, all you have to do is hit a button and the food is on its way to your doorstep.
 
@@ -49,4 +49,4 @@ var Order = new mongoose.Schema({
 ```
 
 ##Wireframes
-![wire frames](public/images/wireframes.png)
+![wire frames](no_more_hangry/public/images/wireframes.png)
