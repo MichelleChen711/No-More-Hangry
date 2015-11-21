@@ -1,4 +1,4 @@
-#No More Hangry
+#No More Hangry ＼＼\\٩(๑`^´๑)۶//／／
 
 ##Overview
 
@@ -9,7 +9,7 @@ If we are asked if we want Mexican food, chances are, we aren't so sure. But, if
 No More Hangry eliminates the top down search structure of selecting a food catergory, then a restaurant of that food catergory, then a food item in that restaurant. 
 By showing the food item first, No More Hangry focuses on the more deciding factors: what entree looks good and its price. 
 
-Create an account, save your address, payment details, preferences once and No More Hangry will do the rest. For example, an image of a delicious entree under $10 with at least 3 stars will be displayed to you. Dont like it? Refresh the page to see another entree. If you are satisfied with the current entree, all you have to do is hit a button and the food is on its way to your doorstep.
+Create an account, save your address, payment details, preferences once and No More Hangry will do the rest. For example, an image of a delicious entree under $10 with at least 3 stars will be displayed to you. Dont like it? Refresh the page to see another entree. If you are satisfied with the current entree, all you have to do is click a button and the food is on its way to your doorstep.
 
 
 ##Data Model
@@ -56,14 +56,14 @@ var Order = new mongoose.Schema({
 
 <p>Summary: <t>Food searches start with the entree. They are randomnized and filtered to the user's preferences. </t></p>
 
-<p>Rationale: <t>Sometimes when ordering from online food delivery websites, users have a hard time deciding what to eat or really just want to get something reasonably good quickly. To prevent the possibility of them becoming "hangry" due to taking too much time deciding on what to get, or having to go through too many steps for a quick meal, No More Hangry's search that starts with showing the user random entrees and their prices will make desicions easier and save time with a simple push of a button.</t></p>
+<p>Rationale: <t>Sometimes when ordering from online food delivery websites, users have a hard time deciding what to eat or really just want to get something reasonably good quickly. To prevent the possibility of them becoming "hangry" due to taking too much time deciding on what to get, or having to go through too many steps for a quick meal, No More Hangry's search that starts with showing the user random entrees and their prices will make desicions easier and save time with a simple click of a button.</t></p>
 
 <p>Users: <t>Anyone who eats</t></p>
 
 <p>Preconditions: <t>The user has registered, set their preferences, and logged in</t></p>
 
 <p>Basic Course of Events: <t><ul>
-<li>The user is immediately presented with an image of a random food item with its price, rating, and restuarant. If the user is satisfied with the item, they press the order button</li>
+<li>The user is immediately presented with an image of a random food item with its price, rating, and restaurant. If the user is satisfied with the item, they press the order button</li>
 <li>The order button links to the order summary page showing the user's address where the food will be delivered, the food item and its price, the payment method, and a confirm button</Li>
 <li>When the confirm button is pressed, the software will "deliver the food"(prob won't be implemented in this ver.)</li>
 </ul></t>
