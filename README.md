@@ -49,4 +49,28 @@ var Order = new mongoose.Schema({
 ```
 
 ##Wireframes
-![wire frames](no_more_hangry/public/images/wireframes.png)
+![wire frames](no_more_hangry/documentation/wireframes.png)
+
+##Use Cases
+<p>Name: <t>No More Hangry</t></p>
+
+<p>Summary: <t>Food searches start with the entree. They are randomnized and filtered to the user's preferences. </t></p>
+
+<p>Rationale: <t>Sometimes when ordering from online food delivery websites, users have a hard time deciding what to eat or really just want to get something reasonably good quickly. To prevent the possibility of them becoming "hangry" due to taking too much time deciding on what to get, or having to go through too many steps for a quick meal, No More Hangry's search that starts with showing the user random entrees and their prices will make desicions easier and save time with a simple push of a button.</t></p>
+
+<p>Users: <t>Anyone who eats</t></p>
+
+<p>Preconditions: <t>The user has registered, set their preferences, and logged in</t></p>
+
+<p>Basic Course of Events: <t><ul>
+<li>The user is immediately presented with an image of a random food item with its price, rating, and restuarant. If the user is satisfied with the item, they press the order button</li>
+<li>The order button links to the order summary page showing the user's address where the food will be delivered, the food item and its price, the payment method, and a confirm button</Li>
+<li>When the confirm button is pressed, the software will "deliver the food"(prob won't be implemented in this ver.)</li>
+</ul></t>
+Alternative Paths: <t><ul>
+<li>At the first page, if the user doesn't like the current food choice, they can either press the dice button or the refresh button</li>
+<li>Upon pressing the dice button, the software will show another completely random entree with the same details</li>
+<li>Upon pressing the refresh button, the software will show another food item within the previous food's catergory. For example if the first food item was under "Japanese" the following food item will be a random food item that is also listed under the "Japanese" food type catergory</li>
+</ul></t></p>
+
+
