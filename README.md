@@ -63,14 +63,21 @@ var Order = new mongoose.Schema({
 <p>Preconditions: <t>The user has registered, set their preferences, and logged in</t></p>
 
 <p>Basic Course of Events: <t><ul>
-<li>The user is immediately presented with an image of a random food item with its price, rating, and restaurant. If the user is satisfied with the item, they press the order button</li>
-<li>The order button links to the order summary page showing the user's address where the food will be delivered, the food item and its price, the payment method, and a confirm button</Li>
-<li>When the confirm button is pressed, the software will "deliver the food"(prob won't be implemented in this ver.)</li>
+	<li>The user is immediately presented with an image of a random food item with its price, rating, and restaurant. If the user is satisfied with the item, they press the order button</li>
+	<li>The order button links to the order summary page showing the user's address where the food will be delivered, the food item and its price, the payment method, a map showing restaurant location, and a confirm button</Li>
+	<li>When the confirm button is pressed, the software will "deliver the food"(prob won't be implemented in this ver.)</li>
 </ul></t>
 Alternative Paths: <t><ul>
-<li>At the first page, if the user doesn't like the current food choice, they can either press the dice button or the refresh button</li>
-<li>Upon pressing the dice button, the software will show another completely random entree with the same details</li>
-<li>Upon pressing the refresh button, the software will show another food item within the previous food's catergory. For example if the first food item was under "Japanese" the following food item will be a random food item that is also listed under the "Japanese" food type catergory</li>
+	<li>At the first page, if the user doesn't like the current food choice, they can either press the dice button or the refresh button</li>
+	<li>Upon pressing the dice button, the software will show another completely random entree with the same details</li>
+	<li>Upon pressing the refresh button, the software will show another food item within the previous food's catergory. For example if the first food item was under "Japanese" the following food item will be a random food item that is also listed under the "Japanese" food type catergory</li>
 </ul></t></p>
 
-
+##Which modules/ concept will you research?
+<ul>
+	<li>Address field modules</li>
+	<li>Google maps plugin</li>
+	<li>if I use facebook login, how to implement share on facebook</li>
+	<li>Some type of rating module</li>
+	<li>How to add images into and display them from mongodb</li>
+</ul>
