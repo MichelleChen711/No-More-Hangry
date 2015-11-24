@@ -18,10 +18,10 @@ require('./models/foodItem');
 require('./models/user');
 require('./models/order');
 mongoose.connect('mongodb://localhost/hangrydb');
-var Restaurant = mongoose.model('Restaurant');
-var FoodItem = mongoose.model('FoodItem');
-var User = mongoose.model('User');
-var Order = mongoose.model('Order');
+//var Restaurant = mongoose.model('Restaurant');
+//var FoodItem = mongoose.model('FoodItem');
+//var User = mongoose.model('User');
+//var Order = mongoose.model('Order');
 
 var app = express();
 
