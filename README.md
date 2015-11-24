@@ -75,9 +75,12 @@ Alternative Paths: <t><ul>
 
 ##Which modules/ concept will you research?
 <ul>
-	<li>Address field modules</li>
-	<li>Google maps plugin</li>
-	<li>if I use facebook login, how to implement share on facebook</li>
-	<li>Some type of rating module</li>
+	<li>User Authentication (3)</li>
+	<li>Address field modules (1)</li>
+	<li>Google maps plugin (2)</li>
+	<li>if I use facebook login, how to implement share on facebook (2)</li>
+	<li>Some type of rating module (1)</li>
 	<li>How to add images into and display them from mongodb</li>
+	<li>navigation bar/sidebar</li>
+	<li>maybe some sass (1)</li>
 </ul>

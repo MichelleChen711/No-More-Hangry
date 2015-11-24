@@ -9,7 +9,6 @@ var User = new mongoose.Schema({
     paymentType: {type: String, required: true},
     maxPrice: {type: Number, required: false},
     minRating: {type: Number, required: false},
-    foodItems: [FoodItem]
+    orderedFood: Array
 });
 mongoose.model('User', User);
-mongoose.connect('mongodb://localhost/hangryuserdb');

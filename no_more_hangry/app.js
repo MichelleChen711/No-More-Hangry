@@ -4,9 +4,24 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var mongoose = require('mongoose');
+var http = require('http').Server(app);
+var port = process.env.PORT || 3000;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+
+//Mongoose
+require('./models/restaurant');
+require('./models/foodItem');
+require('./models/user');
+require('./models/order');
+mongoose.connect('mongodb://localhost/hangrydb');
+var Restaurant = mongoose.model('Restaurant');
+var FoodItem = mongoose.model('FoodItem');
+var User = mongoose.model('User');
+var Order = mongoose.model('Order');
 
 var app = express();
 
@@ -58,3 +73,9 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+//http.listen(port, function() {
+//  console.log("Started listening on port", port);
+//});
+
+

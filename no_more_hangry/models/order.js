@@ -6,4 +6,3 @@ var Order = new mongoose.Schema({
 });
 
 mongoose.model('Order', Order);
-mongoose.connect('mongodb://localhost/hangryorderdb');
