@@ -12,4 +12,4 @@ var FoodItem = new mongoose.Schema({
     numOrders: {type: Number, required: true}
 });
 
-mongoose.model('FoodItem', FoodItem);
+module.exports = mongoose.model('FoodItem', FoodItem);

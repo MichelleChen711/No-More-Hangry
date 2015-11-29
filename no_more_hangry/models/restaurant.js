@@ -5,4 +5,4 @@ var Restaurant = new mongoose.Schema({
     zipCode: {type: Number, required: true}
 });
 
-mongoose.model('Restaurant', Restaurant);
+module.exports = mongoose.model('Restaurant', Restaurant);

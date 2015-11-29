@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+	passportLocalMongoose = require("passport-local-mongoose");
 
 var User = new mongoose.Schema({
 	username: {type: String, required: true},
@@ -11,4 +12,7 @@ var User = new mongoose.Schema({
     minRating: {type: Number, required: false},
     orderedFood: Array
 });
-mongoose.model('User', User);
+
+User.plugin(passportLocalMongoose);
+
+module.exports = mongoose.model('User', User);

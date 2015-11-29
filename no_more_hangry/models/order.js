@@ -5,4 +5,4 @@ var Order = new mongoose.Schema({
     foodItem: {type: mongoose.Schema.Types.ObjectId, ref:'FoodItem'}
 });
 
-mongoose.model('Order', Order);
+module.exports = mongoose.model('Order', Order);
