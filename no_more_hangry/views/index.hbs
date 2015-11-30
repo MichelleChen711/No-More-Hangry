@@ -1,6 +1,12 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
-<form action="" method="post">
-	<input type="submit" value="Sign in" name="signin">
-	<input type="submit" value="Sign up" name="signup">
+<div id="authentication">
+<form id="signInForm" action="" method="post">
+{{message}}
 </form>
+</div>
+<button id='signInButton'>Sign In</button>
+<button id='signUpButton'>Sign Up</button>
+
+<script src="/javascripts/authentication.js"></script>
+
