@@ -24,25 +24,33 @@ router.post('/', function(req, res, next){
       if(user) {
         req.logIn(user, function(err) {
           //res.redirect('/food');
-          console.log("correct");
+          console.log("Logged in " + user);
+          res.render('index', {user: user, title: 'No More Hangry'});
         });
       } else {
-        res.render('index', {title: 'No More Hangry', message:'Your login or password is incorrect.'});
+        res.render('index', {title: 'No More Hangry', message: err.message});
       }
     })(req, res, next);
   }
   else if(req.body.signUp != undefined){
     //do client side stuff: create sign up form
     console.log("signup");
-    User.register(new User({username:req.body.username}),
+    User.register(new User({
+        username:req.body.username,
+        name: req.body.nname,
+        zipCode: req.body.zipCode,
+        address: req.body.address,
+        }),
         req.body.password, function(err,user){
       if(err){
         res.render('index',{title: 'No More Hangry', message: err.message});
         console.log(err);
-      }else{
+      }
+      else{
         passport.authenticate('local')(req,res,function(){
           //res.redirect("/food");
           console.log(user);
+          res.render('index', {user: user, title: 'No More Hangry'});
         });
       }
     });

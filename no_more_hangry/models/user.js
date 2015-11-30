@@ -4,12 +4,12 @@ var mongoose = require('mongoose'),
 var User = new mongoose.Schema({
 	//username: {type: String, required: true},
     //password: {type: String, required: true},
-    name: {type: String, required: false},
-    zipCode: {type: Number, required: false},
-    address: {type: String, required: false},
-    paymentType: {type: String, required: false},
-    maxPrice: {type: Number, required: false},
-    minRating: {type: Number, required: false},
+    name: String,
+    zipCode: Number,
+    address: String,
+    paymentType: String,
+    maxPrice: Number,
+    minRating: Number,
     orderedFood: Array
 });
 

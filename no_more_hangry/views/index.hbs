@@ -5,8 +5,15 @@
 {{message}}
 </form>
 </div>
-<button id='signInButton'>Sign In</button>
-<button id='signUpButton'>Sign Up</button>
-
+<div>
+{{#if user}}
+	<button id='signInButton' style=display:none >Sign In</button>
+	<button id='signUpButton' style=display:none >Sign Up</button>
+{{else}}
+	<button id='signInButton' >Sign In</button>
+	<button id='signUpButton' >Sign Up</button>
+{{/if}}
+</div>
 <script src="/javascripts/authentication.js"></script>
+
 
