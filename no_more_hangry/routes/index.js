@@ -17,9 +17,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next){
   
-  if(req.body.signIn != undefined){
+  if(req.body.login != undefined){
     //do client side stuff: create sign in form
-    console.log("signin");
+    console.log("login");
     passport.authenticate('local', function(err,user) {
       if(user) {
         req.logIn(user, function(err) {
@@ -32,9 +32,9 @@ router.post('/', function(req, res, next){
       }
     })(req, res, next);
   }
-  else if(req.body.signUp != undefined){
+  else if(req.body.register != undefined){
     //do client side stuff: create sign up form
-    console.log("signup");
+    console.log("register");
     User.register(new User({
         username:req.body.username,
         name: req.body.nname,
@@ -56,6 +56,11 @@ router.post('/', function(req, res, next){
     });
 
   }
+});
+
+router.get('/logout', function(req,res,next){
+  req.logout();
+  res.redirect("/");
 });
 
 module.exports = router;

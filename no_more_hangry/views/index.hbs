@@ -1,17 +1,17 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 <div id="authentication">
-<form id="signInForm" action="" method="post">
+<form id="loginForm" action="" method="post">
 {{message}}
 </form>
 </div>
 <div>
 {{#if user}}
-	<button id='signInButton' style=display:none >Sign In</button>
-	<button id='signUpButton' style=display:none >Sign Up</button>
+	<button id='loginButton' style=display:none >Sign In</button>
+	<button id='registerButton' style=display:none >Sign Up</button>
 {{else}}
-	<button id='signInButton' >Sign In</button>
-	<button id='signUpButton' >Sign Up</button>
+	<button id='loginButton' >Log In</button>
+	<button id='registerButton' >Register</button>
 {{/if}}
 </div>
 <script src="/javascripts/authentication.js"></script>

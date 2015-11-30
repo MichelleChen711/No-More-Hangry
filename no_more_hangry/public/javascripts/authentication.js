@@ -1,16 +1,16 @@
-document.getElementById('signInButton').addEventListener('click', signInClick);
-document.getElementById('signUpButton').addEventListener('click', signUpClick);
+document.getElementById('loginButton').addEventListener('click', loginClick);
+document.getElementById('registerButton').addEventListener('click', registerClick);
 
-function signInClick(event) {
-	console.log("signin");
+function loginClick(event) {
+	console.log("login");
 
-	var form = document.getElementById("signInForm");
+	var form = document.getElementById("loginForm");
 	while(form.firstChild) {
 		form.removeChild(form.firstChild);
 	}
 
-	document.getElementById('signInButton').style.display = 'none';
-	document.getElementById('signUpButton').style.display = 'block';
+	document.getElementById('loginButton').style.display = 'none';
+	document.getElementById('registerButton').style.display = 'block';
 
 	//create the input form elements
 	var field1 = document.createElement("div");
@@ -34,23 +34,23 @@ function signInClick(event) {
 	var submit = document.createElement('input');
 	submit.type = "submit";
 	submit.value = "Submit";
-	submit.name = "signIn";
-	//signInform.appendChild
-	document.getElementById("signInForm").appendChild(field1);
-	document.getElementById("signInForm").appendChild(field2);
-	document.getElementById("signInForm").appendChild(submit);
+	submit.name = "login";
+	//loginform.appendChild
+	document.getElementById("loginForm").appendChild(field1);
+	document.getElementById("loginForm").appendChild(field2);
+	document.getElementById("loginForm").appendChild(submit);
 	
 }
-function signUpClick(event) {
-	console.log("signup");
+function registerClick(event) {
+	console.log("register");
 
-	var form = document.getElementById("signInForm");
+	var form = document.getElementById("loginForm");
 	while(form.firstChild) {
 		form.removeChild(form.firstChild);
 	}
 
-	document.getElementById('signUpButton').style.display = 'none';
-	document.getElementById('signInButton').style.display = 'block';
+	document.getElementById('registerButton').style.display = 'none';
+	document.getElementById('loginButton').style.display = 'block';
 
 	//create the input form elements
 	var field1 = document.createElement("div");
@@ -102,13 +102,13 @@ function signUpClick(event) {
 	var submit = document.createElement('input');
 	submit.type = "submit";
 	submit.value = "Submit";
-	submit.name = "signUp";
-	//signInform.appendChild
-	document.getElementById("signInForm").appendChild(field1);
-	document.getElementById("signInForm").appendChild(field2);
-	document.getElementById("signInForm").appendChild(field3);
-	document.getElementById("signInForm").appendChild(field4);
-	document.getElementById("signInForm").appendChild(field5);
-	document.getElementById("signInForm").appendChild(submit);
+	submit.name = "register";
+	//loginform.appendChild
+	document.getElementById("loginForm").appendChild(field1);
+	document.getElementById("loginForm").appendChild(field2);
+	document.getElementById("loginForm").appendChild(field3);
+	document.getElementById("loginForm").appendChild(field4);
+	document.getElementById("loginForm").appendChild(field5);
+	document.getElementById("loginForm").appendChild(submit);
 
 }
