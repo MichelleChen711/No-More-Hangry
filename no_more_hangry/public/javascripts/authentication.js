@@ -18,6 +18,7 @@ function loginClick(event) {
 	var username = document.createElement('input');
 	username.type = "text";
 	username.name = "username";
+	username.required =  true;
 	field1.appendChild(usernameLabel);
 	field1.appendChild(username);
 	field1.id = "field1";
@@ -27,6 +28,7 @@ function loginClick(event) {
 	var password = document.createElement('input');
 	password.type = "password";
 	password.name = "password";
+	password.required = true;
 	field2.appendChild(passwordLabel);
 	field2.appendChild(password);
 	field2.id = "field2"
@@ -58,6 +60,7 @@ function registerClick(event) {
 	var username = document.createElement('input');
 	username.type = "text";
 	username.name = "username";
+	username.required = true;
 	field1.appendChild(usernameLabel);
 	field1.appendChild(username);
 	field1.id = "field1";
@@ -68,6 +71,7 @@ function registerClick(event) {
 	var password = document.createElement('input');
 	password.type = "password";
 	password.name = "password";
+	password.required = true;
 	field2.appendChild(passwordLabel);
 	field2.appendChild(password);
 	field2.id = "field2"
@@ -77,6 +81,7 @@ function registerClick(event) {
 	var name = document.createElement('input');
 	name.type = "text";
 	name.name = "nname";
+	name.required = true;
 	field3.appendChild(nameLabel);
 	field3.appendChild(name);
 	field3.id = "field3";
@@ -86,6 +91,7 @@ function registerClick(event) {
 	var address = document.createElement('input');
 	address.type = "text";
 	address.name = "address";
+	address.required = true;
 	field4.appendChild(addressLabel);
 	field4.appendChild(address);
 	field4.id = "field4";
@@ -95,6 +101,7 @@ function registerClick(event) {
 	var zipCode = document.createElement('input');
 	zipCode.type = "text";
 	zipCode.name = "zipCode";
+	zipCode.required = true;
 	field5.appendChild(zipCodeLabel);
 	field5.appendChild(zipCode);
 	field5.id = "field5";

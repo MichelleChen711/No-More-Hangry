@@ -28,7 +28,7 @@ router.post('/', function(req, res, next){
           res.render('index', {user: user, title: 'No More Hangry'});
         });
       } else {
-        res.render('index', {title: 'No More Hangry', message: err.message});
+        res.render('index', {title: 'No More Hangry', message: "Invalid username or password."});
       }
     })(req, res, next);
   }
