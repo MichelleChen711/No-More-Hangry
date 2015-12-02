@@ -36,4 +36,8 @@
         color: #333;
         transition: all .25s ease-in-out; }
 
+body {
+  font-family: Geneva;
+  color: #333; }
+
 /*# sourceMappingURL=style.css.map */
