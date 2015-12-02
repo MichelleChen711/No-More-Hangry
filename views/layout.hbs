@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='stylesheets/style.css' />
+  </head>
+  <header class ="header">
+    <h1 class="main-header">No More Hangry</h1>
+    <ul class="header-subnav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      {{#if user}}
+        <li><a href="/user">{{user.name}}</a></li>
+        <li><a href="/logout">Log Out</a><li>
+      {{else}}
+        <li><a href="/">Log In or Register</a></li>
+      {{/if}}  
+    </ul>
+  </header>
+  </body>
+
+    {{{body}}}
+  
+  </body>
+</html>
