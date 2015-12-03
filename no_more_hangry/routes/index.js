@@ -1,3 +1,5 @@
+//var apiKey = "58853fd73f3d6de89949c712b1666d2465a7e1e4";
+
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
@@ -61,6 +63,12 @@ router.post('/', function(req, res, next){
 router.get('/logout', function(req,res,next){
   req.logout();
   res.redirect("/");
+});
+
+router.get('/about', function(req,res,next){
+  //"http://api.locu.com/v1_0/venue/search/?api_key="+apiKey+"postal_code=02139"
+  //GET "http://api.locu.com/v1_0/venue/insight/?api_key="+apiKey+"&has_menu=true&postal_code=02139"
+
 });
 
 module.exports = router;

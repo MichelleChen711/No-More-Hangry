@@ -1,5 +1,14 @@
 * {
     font-family: Geneva;
+    font-size: 1.2rem;
+}
+
+.container {
+  width:20%;
+}
+
+.form-control {
+  margin-bottom: 5px;
 }
 
 .header {
@@ -20,6 +29,7 @@
   top: 4rem;
   text-align: center;
   margin-bottom: 0;
+  margin-left:-5%;
 
   li {
     float: none;

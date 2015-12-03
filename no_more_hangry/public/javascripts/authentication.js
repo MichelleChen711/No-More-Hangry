@@ -14,22 +14,23 @@ function loginClick(event) {
 
 	//create the input form elements
 	var field1 = document.createElement("div");
-	var usernameLabel = document.createTextNode("Username: ");
 	var username = document.createElement('input');
 	username.type = "text";
 	username.name = "username";
+	username.className = "form-control";
+	username.placeHolder = "Username";
 	username.required =  true;
-	field1.appendChild(usernameLabel);
+	username.placeholder = "Username";
 	field1.appendChild(username);
 	field1.id = "field1";
 
 	var field2 = document.createElement("div");
-	var passwordLabel = document.createTextNode("Password: ");
 	var password = document.createElement('input');
 	password.type = "password";
 	password.name = "password";
+	password.className = "form-control";
+	password.placeholder ="Password";
 	password.required = true;
-	field2.appendChild(passwordLabel);
 	field2.appendChild(password);
 	field2.id = "field2"
 
@@ -37,6 +38,7 @@ function loginClick(event) {
 	submit.type = "submit";
 	submit.value = "Submit";
 	submit.name = "login";
+	submit.className = "btn btn-success";
 	//loginform.appendChild
 	document.getElementById("loginForm").appendChild(field1);
 	document.getElementById("loginForm").appendChild(field2);
@@ -56,53 +58,55 @@ function registerClick(event) {
 
 	//create the input form elements
 	var field1 = document.createElement("div");
-	var usernameLabel = document.createTextNode("Username: ");
+	
 	var username = document.createElement('input');
 	username.type = "text";
 	username.name = "username";
+	username.className = "form-control";
 	username.required = true;
-	field1.appendChild(usernameLabel);
+	username.placeholder = "Username";
+
 	field1.appendChild(username);
 	field1.id = "field1";
 
 	
 	var field2 = document.createElement("div");
-	var passwordLabel = document.createTextNode("Password: ");
 	var password = document.createElement('input');
 	password.type = "password";
 	password.name = "password";
+	password.className = "form-control";
+	password.placeholder = "Password";	
 	password.required = true;
-	field2.appendChild(passwordLabel);
 	field2.appendChild(password);
 	field2.id = "field2"
 	
 	var field3 = document.createElement("div");
-	var nameLabel = document.createTextNode("Name: ");
 	var name = document.createElement('input');
 	name.type = "text";
 	name.name = "nname";
+	name.className = "form-control";
+	name.placeholder = "Name";
 	name.required = true;
-	field3.appendChild(nameLabel);
 	field3.appendChild(name);
 	field3.id = "field3";
 
 	var field4 = document.createElement("div");
-	var addressLabel = document.createTextNode("Address: ");
 	var address = document.createElement('input');
 	address.type = "text";
 	address.name = "address";
+	address.className = "form-control";
+	address.placeholder = "Address";
 	address.required = true;
-	field4.appendChild(addressLabel);
 	field4.appendChild(address);
 	field4.id = "field4";
 
 	var field5 = document.createElement("div");
-	var zipCodeLabel = document.createTextNode("Zip Code: ");
 	var zipCode = document.createElement('input');
 	zipCode.type = "text";
 	zipCode.name = "zipCode";
+	zipCode.className = "form-control";
+	zipCode.placeholder = "Zip Code";
 	zipCode.required = true;
-	field5.appendChild(zipCodeLabel);
 	field5.appendChild(zipCode);
 	field5.id = "field5";
 
@@ -110,6 +114,7 @@ function registerClick(event) {
 	submit.type = "submit";
 	submit.value = "Submit";
 	submit.name = "register";
+	submit.className = "btn btn-success";
 	//loginform.appendChild
 	document.getElementById("loginForm").appendChild(field1);
 	document.getElementById("loginForm").appendChild(field2);

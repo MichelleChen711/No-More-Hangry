@@ -1,18 +1,17 @@
 <body>
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<div id="authentication">
-<form id="loginForm" action="" method="post">
-{{message}}
-</form>
+<div class="container">
+	<p>Welcome to {{title}}</p>
+	<div id="authentication">
+	<form id="loginForm" action="" method="post" class="form-signin">
+		{{message}}
+	</form>
 </div>
-<div>
 {{#if user}}
-	<button id='loginButton' style=display:none >Sign In</button>
-	<button id='registerButton' style=display:none >Sign Up</button>
+	<button id='loginButton' style=display:none>Log In</button>
+	<button id='registerButton' style=display:none >Register</button>
 {{else}}
-	<button id='loginButton' >Log In</button>
-	<button id='registerButton' >Register</button>
+	<button id='loginButton' class= "btn btn-info">Log In</button>
+	<button id='registerButton' class= "btn btn-info">Register</button>
 {{/if}}
 </div>
 <script src="/javascripts/authentication.js"></script>
