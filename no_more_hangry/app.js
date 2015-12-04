@@ -55,7 +55,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://localhost/hangrydb');
+mongoose.connect('mongodb://localhost:10111/hangrydb');
 
 app.use(function(req, res, next){
   res.locals.user = req.user;
