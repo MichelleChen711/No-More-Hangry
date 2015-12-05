@@ -70,7 +70,7 @@ router.get('/about', function(req,res,next){
 });
 
 router.get('/food', function(req,res,next){
-  
+  /**
   var newRestaurant = new Restaurant({
     name: "Smashburger",
     zipCode: 10005
@@ -91,7 +91,7 @@ router.get('/food', function(req,res,next){
         console.log("Saved");
       });
   });
-
+  **/
   res.render('food', {title: "Food", user: user});
 });
 
