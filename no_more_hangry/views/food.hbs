@@ -1,6 +1,19 @@
 <body>
-<p>FEWD</p>
-	<div class='center'>
-		foooood
+	<div class="container marketing">
+		<div class="center">
+			<img class="img-circle" src={{imgPath}} width=310px height=310px>
+			<p class="lead"><h2 class="featurette-heading">{{food.name}}</h2>
+			${{food.price}}<br>
+			{{food.type}}<br>
+			Rating: {{food.rating}}/5<br>
+			Number of Ratings: {{food.numRatings}}<br>
+			Number of Views: {{food.numViews}}<br>
+			Number of Orders: {{food.numOrders}}<br>
+			Restaurant: {{food.restaurant}}<br>
+
+			<button id='randomButton' class= "btn btn-info" style="display:inline" name="randomButton">Randomnize</button>
+			<button id='similarButton' class= "btn btn-info" style="display:inline" name="similarButton" value={{food.type}}>Similar</button>
+			<button id='orderButton' class= "btn btn-success" style="display:inline" name="orderButton" value={{food}}>Order Now</button>
+		</div>
 	</div>
 </body>

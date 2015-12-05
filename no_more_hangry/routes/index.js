@@ -12,6 +12,7 @@ var FoodItem = mongoose.model('FoodItem');
 var User = mongoose.model('User');
 //var Order = require('./models/order');
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'No More Hangry'});
@@ -69,32 +70,82 @@ router.get('/about', function(req,res,next){
   res.render('about', {title: "About"}); 
 });
 
+var count= 0;
 router.get('/food', function(req,res,next){
-  /**
-  var newRestaurant = new Restaurant({
-    name: "Smashburger",
-    zipCode: 10005
-  });
-  console.log(newRestaurant);
-  newRestaurant.save(function(err, restuarant,count){
-      var newFood = new FoodItem({
-        name: Cheeseburger,
-        price: 7.00,
-        rating: 4,
-        numRatings: 3,
-        type: "American",
-        restuarant: restaurant 
-      });
-      console.log(newFood);
+  var rand = Math.random();
+  console.log(rand);
+  var minRating = 0;
+  var maxPrice = 20.00;
+  var zipcode = 10003;
+  var foodArray = [];
 
-      newFood.save(function(err, food, count){
-        console.log("Saved");
+  /**
+  FoodItem.find({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,foods,count){
+    console.log(foods);
+    for
+  });**/
+
+
+  FoodItem.findOne({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "random":{"$gte":rand} },function(err,food,count){
+    if(count<1){
+        count++;
+        console.log(food.random);
+        food.numViews ++;
+        food.save(function(err,food,count){
+          res.render('food', {food: food, imgPath: food.imgPath});
+        });
+      }
+    else{
+      FoodItem.findOne({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "random":{"$gte":rand} },function(err,food,count){
+        if(food){
+          count=0;
+          console.log(food.random);
+          food.numViews ++;
+          food.save(function(err,food,count){
+            res.render('food', {food: food, imgPath: food.imgPath});
+          });
+        }
+        else{
+          res.redirect("/food");
+        }
       });
+    } 
   });
-  **/
-  res.render('food', {title: "Food"});
 });
 
 
+router.get('/add', function(req,res,next){
+  res.render('add', {title: "Add to DB"});
+});
+
+router.post('/add', function(req,res){
+  
+  if(req.body.addFood){
+    
+    var newFood = new FoodItem({
+      name: req.body.fName,
+      price: req.body.fPrice,
+      rating: req.body.fRating,
+      numRatings: req.body.fNumRating,
+      type: req.body.fType,
+      restaurant: req.body.fRestaurant,
+      zipCode: req.body.fZip,
+      numViews: req.body.fNumView,
+      numOrders: req.body.fNumOrder,
+      random: Math.random(),
+      imgPath: req.body.fImg
+    });
+    
+    newFood.save(function(err, food, count){
+      if(err){
+        console.log(err);
+      }
+      else{
+        console.log("Saved");
+        console.log(food);
+      }
+    });
+  }
+});
 
 module.exports = router;
