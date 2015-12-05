@@ -66,7 +66,7 @@ router.get('/logout', function(req,res,next){
 });
 
 router.get('/about', function(req,res,next){
-  res.render('about', {title: "About", user: user}); 
+  res.render('about', {title: "About"}); 
 });
 
 router.get('/food', function(req,res,next){
@@ -92,7 +92,7 @@ router.get('/food', function(req,res,next){
       });
   });
   **/
-  res.render('food', {title: "Food", user: user});
+  res.render('food', {title: "Food"});
 });
 
 
