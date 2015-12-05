@@ -88,8 +88,7 @@ router.get('/food', function(req,res,next){
       console.log(newFood);
 
       newFood.save(function(err, food, count){
-        //console.log("Saved");
-        res.redirect('/list/' + newList.slug);
+        console.log("Saved");
       });
   });
 
