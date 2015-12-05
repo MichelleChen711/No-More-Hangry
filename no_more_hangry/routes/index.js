@@ -7,8 +7,8 @@ var passport = require('passport');
 var passportLocalMongoose = require('passport-local-mongoose');
 var session = require('express-session');
 
-//var Restaurant = require('./models/restaurant');
-//var FoodItem = require('./models/foodItem');
+var Restaurant = mongoose.model('Restaurant');
+var FoodItem = mongoose.model('FoodItem');
 var User = mongoose.model('User');
 //var Order = require('./models/order');
 
@@ -66,9 +66,36 @@ router.get('/logout', function(req,res,next){
 });
 
 router.get('/about', function(req,res,next){
-  //"http://api.locu.com/v1_0/venue/search/?api_key="+apiKey+"postal_code=02139"
-  //GET "http://api.locu.com/v1_0/venue/insight/?api_key="+apiKey+"&has_menu=true&postal_code=02139"
 
+  res.render('about'); 
 });
+
+router.get('/food', function(req,res,next){
+  var newRestaurant = new Restaurant({
+    name: "Smashburger",
+    zipCode: 10005
+  });
+  console.log(newRestaurant);
+  newRestaurant.save(function(err, restuarant,count){
+      var newFood = new FoodItem({
+        name: Cheeseburger,
+        price: 7.00,
+        rating: 4,
+        numRatings: 3,
+        type: "American",
+        restuarant: restaurant 
+      });
+      console.log(newFood);
+
+      newFood.save(function(err, food, count){
+        //console.log("Saved");
+        res.redirect('/list/' + newList.slug);
+      });
+  });
+
+  res.render('food');
+})
+
+
 
 module.exports = router;
