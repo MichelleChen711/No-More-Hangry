@@ -12,7 +12,6 @@ var FoodItem = mongoose.model('FoodItem');
 var User = mongoose.model('User');
 //var Order = require('./models/order');
 
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'No More Hangry'});
@@ -62,6 +61,7 @@ router.post('/', function(req, res, next){
 });
 
 router.get('/logout', function(req,res,next){
+  console.log("LOG out this user: " + req.user);
   req.logout();
   res.redirect("/");
 });
@@ -70,7 +70,42 @@ router.get('/about', function(req,res,next){
   res.render('about', {title: "About"}); 
 });
 
-var count= 0;
+router.get('/food', function(req,res,next){
+
+  /**FoodItem.remove(function(err){
+    console.log("done");
+  });**/
+
+  if(req.user){
+
+    var minRating = 0;
+    var maxPrice = 99.00;
+    var zipcode = req.user.zipCode;
+    
+    if(req.user.minRating != undefined){
+      console.log("has min rating");
+      minRating = req.user.minRating;
+    }
+    if(req.user.maxPrice != undefined){
+      console.log("has max price");
+      maxPrice = req.user.maxPrice;
+    }
+     
+    FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,result){
+      if(result){
+        console.log(result);
+        res.render('food', {user: req.user, food:result, imgPath:result.imgPath});
+      }
+      else{
+        res.render('food', {message: "Sorry! We couldn't find anything that matches your preferences..."});
+      }
+    });
+  }else{
+    res.render('food');
+  }
+});
+
+/**var count= 0;
 router.get('/food', function(req,res,next){
   var rand = Math.random();
   console.log(rand);
@@ -79,11 +114,11 @@ router.get('/food', function(req,res,next){
   var zipcode = 10003;
   var foodArray = [];
 
-  /**
+  
   FoodItem.find({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,foods,count){
     console.log(foods);
     for
-  });**/
+  });
 
 
   FoodItem.findOne({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "random":{"$gte":rand} },function(err,food,count){
@@ -112,7 +147,7 @@ router.get('/food', function(req,res,next){
     } 
   });
 });
-
+**/
 
 router.get('/add', function(req,res,next){
   res.render('add', {title: "Add to DB"});
@@ -132,7 +167,6 @@ router.post('/add', function(req,res){
       zipCode: req.body.fZip,
       numViews: req.body.fNumView,
       numOrders: req.body.fNumOrder,
-      random: Math.random(),
       imgPath: req.body.fImg
     });
     

@@ -8,15 +8,24 @@
     <link rel='stylesheet' href='stylesheets/style.css' />
   </head>
   <header class ="header">
-    <h1 class="main-header">No More Hangry</h1>
-    <h1 class="main-header">＼＼\٩(๑`^´๑)۶//／／</h1>
+    <h1 class="main-header">NO MORE HANGRY</h1>
+    <h1 class="main-header">  ٩(๑`^´๑)۶</h1>
     <ul class="header-subnav">
       <li><a href="/food">Home</a></li>
       <li><a href="/about">About</a></li>
-      <li><a href="/add">Add to DB</a></li>
+      <li><a href="/add">Database</a></li>
       {{#if user}}
-        <li><a href="/user">{{user.name}}</a></li>
-        <li><a href="/logout">Log Out</a><li>
+        <li class="dropdown">
+          <a href="/user" class="dropdown-toggle" type="button" data-toggle="dropdown">{{user.name}}
+          <span class="caret"></span></button>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="dropdownli"><a href="#">Preferences</a></li>
+            <li class ="dropdownli"><a href="#">My Orders</a></li>
+            <li role="separator" class="dropdownli divider"></li>
+            <li class="dropdownli"><a href="/logout">Log Out</a></li>
+          </ul>
+        </li>
       {{else}}
         <li><a href="/">Log In</a></li>
       {{/if}}  
@@ -24,9 +33,11 @@
   </header>
   </body>
 
-    {{{body}}}
+   
   
+
+    {{{body}}}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!--<script src="javascripts/bootstrap.min.js"></script>-->
+  <script src="javascripts/bootstrap.min.js"></script>
   </body>
 </html>
