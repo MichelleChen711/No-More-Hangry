@@ -4,14 +4,19 @@ img{
   margin-top:20px;
 }
 
-
+.featurette-heading{
+  margin-top:5px;
+  margin-bottom:0px;
+}
 .centertext{
+  margin-top:0px;
   text-align:center;
-  margin-bottom:20px;
+  margin-bottom:10px;
 }
 
 .centerdiv {
     margin: auto;
+    margin-top:50px;
     width: 300px;
     //border:3px solid #73AD21;
 }
@@ -33,6 +38,13 @@ p{
   margin-bottom:10px;
 }
 
+.btn-primary {
+  display:block;
+  position:relative;
+  margin: auto;
+  margin-bottom:10px;
+}
+
 .btn-success {
   display:block;
   position:relative;
@@ -48,7 +60,7 @@ p{
   text-align: center;
   //background: url('../../images/pepperoni_pizza_slices.png') no-repeat center center;
   background-size: cover;
-  padding: 10rem;
+  padding: 1rem;
   
   .main-header {
     color: grey;
@@ -98,7 +110,8 @@ p{
     a{
       text-transform: none;
       font-size: 1.3rem;
-    } 
+    }
+
   }
 }
 

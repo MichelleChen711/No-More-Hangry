@@ -13,16 +13,15 @@
 					
 					<div class="center">
 						<div class="centertext"><h2 class="featurette-heading">{{food.name}}</h2>
-							${{food.price}}<br>
+						<div class="centertext"><h2 class="featurette-heading">${{food.price}}</h2><br>
 							{{food.type}}<br>
-							Rating: {{food.rating}}/5<br>
-							Number of Ratings: {{food.numRatings}}<br>
-							Number of Views: {{food.numViews}}<br>
-							Number of Orders: {{food.numOrders}}<br>
-							Restaurant: {{food.restaurant}}<br>
+							Rated {{food.rating}}/5 ({{food.numRatings}} ratings)<br>
+							Viewed {{food.numViews}} times<br>
+							Ordered {{food.numOrders}} times<br>
+							<i>{{food.restaurant}}</i><br>
 						</div>
 
-						<button id='randomButton' class= "btn btn-info" style="display:inline" name="randomButton">Randomnize</button>
+						<button id='randomButton' class= "btn btn-primary" style="display:inline" name="randomButton">Randomnize</button>
 						<button id='similarButton' class= "btn btn-info" style="display:inline" name="similarButton" value={{food.type}}>Similar</button>
 						<button id='orderButton' class= "btn btn-success" style="display:inline" name="orderButton" value={{food}}>Order Now</button>
 					</div>

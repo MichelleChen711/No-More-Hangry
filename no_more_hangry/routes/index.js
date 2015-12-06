@@ -105,6 +105,9 @@ router.get('/food', function(req,res,next){
   }
 });
 
+router.post('/food', function(req,res,next){
+  
+});
 /**var count= 0;
 router.get('/food', function(req,res,next){
   var rand = Math.random();
