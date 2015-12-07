@@ -14,6 +14,7 @@ var User = mongoose.model('User');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
   res.render('index', { title: 'No More Hangry'});
 });
 
@@ -39,7 +40,8 @@ router.post('/', function(req, res, next){
     console.log("register");
     User.register(new User({
         username:req.body.username,
-        name: req.body.nname,
+        firstname: req.body.fname,
+        lastname: req.body.lname,
         zipCode: req.body.zipCode,
         address: req.body.address,
         }),
@@ -80,33 +82,44 @@ router.get('/food', function(req,res,next){
 
     var minRating = 0;
     var maxPrice = 99.00;
-    var zipcode = req.user.zipCode;
+    var zipcode = 0;
     
-    if(req.user.minRating != undefined){
-      console.log("has min rating");
-      minRating = req.user.minRating;
-    }
-    if(req.user.maxPrice != undefined){
-      console.log("has max price");
-      maxPrice = req.user.maxPrice;
-    }
+    //Has zipcode set
+    if(req.user.zipCode != undefined){
+      console.log("haszipcode");
+      zipcode = req.user.zipCode;
+
+      if(req.user.minRating != undefined){
+        console.log("has min rating");
+        minRating = req.user.minRating;
+      }
+      if(req.user.maxPrice != undefined){
+        console.log("has max price");
+        maxPrice = req.user.maxPrice;
+      }
      
-    FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,result){
-      if(result){
-        console.log(result);
-        res.render('food', {user: req.user, food:result, imgPath:result.imgPath});
-      }
-      else{
-        res.render('food', {message: "Sorry! We couldn't find anything that matches your preferences..."});
-      }
-    });
+      FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,result){
+        if(result){
+          console.log(result);
+          res.render('food', {user: req.user, food:result, imgPath:result.imgPath});
+        }
+        else{
+          res.render('food', {message: "Sorry! We couldn't find anything that matches your preferences..."});
+        }
+      });
+    
+    //No zip code set
+    }else{
+      res.render('food',{noZip: "Zip code:"});
+    }
+  //No user  
   }else{
     res.render('food');
   }
 });
 
 router.post('/food', function(req,res,next){
-  
+
 });
 /**var count= 0;
 router.get('/food', function(req,res,next){
@@ -184,5 +197,48 @@ router.post('/add', function(req,res){
     });
   }
 });
+
+router.get('/settings', function(req,res,next){
+  res.render("settings", {user:req.user});
+});
+
+router.post('/settings', function(req,res,next){
+  if(req.body.editAccount){
+    User.findOne({"_id":req.user._id},function(err,user){
+      user.firstname = req.body.firstname;
+      user.lastname = req.body.lastname;
+      user.address = req.body.address;
+      user.zipCode = req.body.zip;
+      user.paymentType = req.body.payment;
+      console.log(user);
+      user.save(function(err,user){
+        if(!err){
+          console.log(user);
+          res.redirect("/settings");
+        }
+      });
+    });
+  }
+  if(req.body.editPreferences){
+    User.findOne({"_id":req.user._id},function(err,user){
+      user.maxPrice = req.body.maxPrice;
+      user.minRating = req.body.minRating;
+      user.save(function(err,user){
+        if(!err){
+          console.log(user);
+          res.redirect("/settings");
+        }
+      });
+    });
+  }
+
+});
+
+
+
+
+
+
+
 
 module.exports = router;

@@ -18,7 +18,6 @@ function loginClick(event) {
 	username.type = "text";
 	username.name = "username";
 	username.className = "form-control";
-	username.placeHolder = "Username";
 	username.required =  true;
 	username.placeholder = "Username";
 	field1.appendChild(username);
@@ -81,16 +80,26 @@ function registerClick(event) {
 	field2.id = "field2"
 	
 	var field3 = document.createElement("div");
-	var name = document.createElement('input');
-	name.type = "text";
-	name.name = "nname";
-	name.className = "form-control";
-	name.placeholder = "Name";
-	name.required = true;
-	field3.appendChild(name);
+	var firstname = document.createElement('input');
+	firstname.type = "text";
+	firstname.name = "fname";
+	firstname.className = "form-control";
+	firstname.placeholder = "First Name";
+	firstname.required = true;
+	field3.appendChild(firstname);
 	field3.id = "field3";
 
 	var field4 = document.createElement("div");
+	var lastname = document.createElement('input');
+	lastname.type = "text";
+	lastname.name = "lname";
+	lastname.className = "form-control";
+	lastname.placeholder = "Last Name";
+	lastname.required = true;
+	field4.appendChild(lastname);
+	field4.id = "field3";
+
+	/**var field4 = document.createElement("div");
 	var address = document.createElement('input');
 	address.type = "text";
 	address.name = "address";
@@ -109,6 +118,7 @@ function registerClick(event) {
 	zipCode.required = true;
 	field5.appendChild(zipCode);
 	field5.id = "field5";
+	**/
 
 	var submit = document.createElement('input');
 	submit.type = "submit";
@@ -120,7 +130,7 @@ function registerClick(event) {
 	document.getElementById("loginForm").appendChild(field2);
 	document.getElementById("loginForm").appendChild(field3);
 	document.getElementById("loginForm").appendChild(field4);
-	document.getElementById("loginForm").appendChild(field5);
+	//document.getElementById("loginForm").appendChild(field5);
 	document.getElementById("loginForm").appendChild(submit);
 
 }

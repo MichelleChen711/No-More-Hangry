@@ -1,0 +1,47 @@
+<div class="centerdiv">
+	{{#if user}}
+	<div class="centertext">
+		<h2 class="featurette-heading">My Preferences</h2>
+	</div>
+		<div id="preferences">
+			{{#if user.maxPrice}}
+			<label>Price: Less than ${{user.maxPrice}}</label></br>
+			{{else}}
+			<label>Price: Not Set</label></br>
+			{{/if}}
+			{{#if user.minRating}}
+			<label>Rating: Greater than {{user.minRating}}/5</label></br>
+			{{else}}
+			<label>Rating: Not Set</label></br>
+			{{/if}}
+		</div>
+		<form id="editform2" action="" method="post" class="form-signin">
+			<input id="price" type="hidden" value={{user.maxPrice}}></input>
+			<input id="rating" type="hidden" value={{user.minRating}}></input>
+			<input type="button" class="btn btn-info" id="editPreferences" value="Edit Preferences">
+		</form>
+	<div class="centertext">
+		<h2 class="featurette-heading">My Account</h2>
+	</div>
+		<div id="userinfo">
+		 	<label>First Name: {{user.firstname}}</label></br>
+		 	<label>Last Name: {{user.lastname}} </label></br>
+		 	<label>Address: {{user.address}}</label></br>
+		 	<label>Zip Code: {{user.zipCode}}</label></br>
+		 	<label>Payment Type: {{user.paymentType}}</label></br>
+		</div>
+		<form id="editform1" action="" method="post" class="form-signin">
+			<input id="fname" type="hidden" value={{user.firstname}}></input>
+			<input id="lname" type="hidden" value={{user.lastname}}></input>
+			<input id="address" type="hidden" value="{{user.address}}"></input>
+			<input id="zip" type="hidden" value={{user.zipCode}}></input>
+			<input id="payment" type="hidden" value={{user.paymentType}}></input>
+			<input type="button" class="btn btn-info" id="editAccount" value="Edit Account Info">
+		 	<input type="submit" class="btn btn-info" id="editPassword" value="Change Password">
+		</form>
+		{{else}}
+		Log in first
+		{{/if}}
+
+	<script src="/javascripts/settings.js"></script>
+</div>

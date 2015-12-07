@@ -1,37 +1,37 @@
-<body>
-	<div class="container marketing">
-		<div class="centerdiv">
+<div class="centerdiv">
+  {{#if user}}
+    {{#if noZip}}
+      Set zip
+    {{else}}
+      {{#if message}}
+        <div class="centertext">
+          {{message}}</br>
+          Click <a href="/settings">here</a> to manage your preferences.
+        </div>
+      {{else}} 
+        <img class="img-circle" src={{imgPath}} width=300px height=300px>
+      
+        <div class="center">
+          <div class="centertext">
+            <h2 class="featurette-heading">{{food.name}}</h2>
+          <div class="centertext">
+            <h2 class="featurette-heading">${{food.price}}</h2><br>
+            {{food.type}}<br>
+            Rated {{food.rating}}/5 ({{food.numRatings}} ratings)<br>
+            Viewed {{food.numViews}} times<br>
+            Ordered {{food.numOrders}} times<br>
+            <i>{{food.restaurant}}</i><br>
+          </div>
 
-			{{#if user}}
-				{{#if message}}
-					<div class="centertext">
-						{{message}}</br>
-						Click <a href="/user">here</a> to manage your preferences.
-					</div>
-				{{else}}
-					<img class="img-circle" src={{imgPath}} width=300px height=300px>
-					
-					<div class="center">
-						<div class="centertext"><h2 class="featurette-heading">{{food.name}}</h2>
-						<div class="centertext"><h2 class="featurette-heading">${{food.price}}</h2><br>
-							{{food.type}}<br>
-							Rated {{food.rating}}/5 ({{food.numRatings}} ratings)<br>
-							Viewed {{food.numViews}} times<br>
-							Ordered {{food.numOrders}} times<br>
-							<i>{{food.restaurant}}</i><br>
-						</div>
-
-						<button id='randomButton' class= "btn btn-primary" style="display:inline" name="randomButton">Randomnize</button>
-						<button id='similarButton' class= "btn btn-info" style="display:inline" name="similarButton" value={{food.type}}>Similar</button>
-						<button id='orderButton' class= "btn btn-success" style="display:inline" name="orderButton" value={{food}}>Order Now</button>
-					</div>
-				{{/if}}
-
-			{{else}}
-				<div class="centertext">
-					Please log in or register first.
-				</div>
-			{{/if}}
-		</div>
-	</div>
-</body>
+          <button id='randomButton' class= "btn btn-primary" style="display:inline" name="randomButton">Randomnize</button>
+          <button id='similarButton' class= "btn btn-info" style="display:inline" name="similarButton" value={{food.type}}>Similar</button>
+          <button id='orderButton' class= "btn btn-success" style="display:inline" name="orderButton" value={{food}}>Order Now</button>
+        </div>
+      {{/if}}
+    {{/if}}
+  {{else}}
+    <div class="centertext">
+      Please log in or register first.
+    </div>
+  {{/if}}
+</div>

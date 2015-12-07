@@ -16,11 +16,11 @@
       <li><a href="/add">Database</a></li>
       {{#if user}}
         <li class="dropdown">
-          <a href="/user" class="dropdown-toggle" type="button" data-toggle="dropdown">{{user.name}}
+          <a href="/user" class="dropdown-toggle" type="button" data-toggle="dropdown">{{user.firstname}}
           <span class="caret"></span></button>
           </a>
           <ul class="dropdown-menu">
-            <li class="dropdownli"><a href="#">Preferences</a></li>
+            <li class="dropdownli"><a href="/settings">Settings</a></li>
             <li class ="dropdownli"><a href="#">My Orders</a></li>
             <li role="separator" class="dropdownli divider"></li>
             <li class="dropdownli"><a href="/logout">Log Out</a></li>

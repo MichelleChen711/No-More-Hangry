@@ -1,23 +1,21 @@
-<body>
-<div class="container marketing">
-	<div class="centerdiv">
-		<p>Welcome to {{title}}</p>
+<div class="centerdiv">
+	<p>Welcome to {{title}}</p>
+	<div id="authentication">
+	<div class="centertext">
 		{{message}}
-		<div id="authentication">
-		<form id="loginForm" action="" method="post" class="form-signin">
-		</form>
-		</div>
-		<div>
-			{{#if user}}
-				<button id='loginButton' style=display:none >Log In</button>
-				<button id='registerButton' style=display:none >Register</button>
-			{{else}}
-				<button id='loginButton' class= "btn btn-info">Log In</button>
-				<button id='registerButton' class= "btn btn-info">Register</button>
-			{{/if}}
-		</div>
+	</div>
+	<form id="loginForm" action="" method="post" class="form-signin">
+	</form>
+	</div>
+	<div>
+		{{#if user}}
+			<button id='loginButton' style=display:none >Log In</button>
+			<button id='registerButton' style=display:none >Register</button>
+		{{else}}
+			<button id='loginButton' class= "btn btn-info">Log In</button>
+			<button id='registerButton' class= "btn btn-info">Register</button>
+		{{/if}}
 	</div>
 </div>
 <script src="/javascripts/authentication.js"></script>
-</body>
 
