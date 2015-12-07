@@ -15,7 +15,7 @@ var User = mongoose.model('User');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  res.render('index', { title: 'No More Hangry'});
+  res.render('index', { title: 'No More Hangry', user:req.user});
 });
 
 router.post('/', function(req, res, next){
@@ -100,7 +100,7 @@ router.get('/food', function(req,res,next){
      
       FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,result){
         if(result){
-          console.log(result);
+          console.log("******",result);
           res.render('food', {user: req.user, food:result, imgPath:result.imgPath});
         }
         else{
