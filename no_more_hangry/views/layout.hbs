@@ -11,8 +11,9 @@
     <h1 class="main-header">NO MORE HANGRY</h1>
     <h1 class="main-header">  ٩(๑`^´๑)۶</h1>
     <ul class="header-subnav">
-      <li><a href="/food">Home</a></li>
+      <li><a href="/">Home</a></li>
       <li><a href="/about">About</a></li>
+      <li><a href="/food">Get Food</a></li>
       <li><a href="/add">Database</a></li>
       {{#if user}}
         <li class="dropdown">
@@ -27,15 +28,13 @@
           </ul>
         </li>
       {{else}}
-        <li><a href="/">Log In</a></li>
+        <li><a href="/login">Log In</a></li>
       {{/if}}  
     </ul>
   </header>
   </body>
 
    
-  
-
     {{{body}}}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="javascripts/bootstrap.min.js"></script>

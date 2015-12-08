@@ -1,0 +1,29 @@
+<div class="large-centerdiv">
+	<div class="centertext">
+		<h3>Order for {{user.firstname}} {{user.lastname}}</h3>
+	</div>
+	<div class="col-lg-4 col-sm-6 text-center">
+		<img class="img-circle img-center img-border" src={{foodImg}} width="300px" height="300px">
+		<h3>{{foodName}}</h3>
+	</div>
+	<div class="col-lg-4 col-sm-6">
+		<h3>Address</h3>
+		{{user.address}} {{user.zipCode}}
+		<hr>		
+		<h3>Phone Number</h3>
+		(917)-111-1111
+		<hr>
+		<h3>Payment Information</h3>
+		{{user.paymentType}}
+		<hr>
+		<h3>Order Summary</h3>
+		Item: {{foodName}} ${{foodPrice}} (1x)</br>
+		Tax: ${{tax}}</br>
+		Delivery Fee: ${{fee}}</br>
+		<hr>
+		Total: ${{total}} </br></br>
+		<form>
+			<input id='orderButton' type="submit" class= "btn btn-success" style="display:inline" name="confirmOrder" value="Confirm Order">
+         </form>
+	</div>
+</div>

@@ -1,11 +1,30 @@
-img {
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px; }
+
+.col-lg-4 {
+  width: 50%;
+  height: 50%;
+  position: relative;
+  display: inline-block; }
+
+.img-circle {
   display: block;
   margin: auto;
-  margin-top: 20px; }
+  margin-top: 10px; }
+
+.img-border {
+  border: 1px solid lightgray; }
 
 .featurette-heading {
   margin-top: 5px;
-  margin-bottom: 0px; }
+  margin-bottom: 0px;
+  font-size: 20px; }
 
 .centertext {
   margin-top: 0px;
@@ -16,6 +35,16 @@ img {
   margin: auto;
   margin-top: 50px;
   width: 300px; }
+
+.large-centerdiv {
+  margin: auto;
+  margin-top: 50px;
+  width: 80%; }
+
+.medium-centerdiv {
+  margin: auto;
+  margin-top: 50px;
+  width: 50%; }
 
 center {
   margin: auto;
@@ -49,25 +78,27 @@ p {
 .header {
   text-align: center;
   background-size: cover;
-  padding: 1rem; }
+  padding: 0rem;
+  height: 110px; }
   .header .main-header {
     color: grey;
     text-shadow: 2px 2px 6px lightgrey;
-    font-size: 5rem; }
+    font-size: 3rem;
+    margin-top: 5px; }
 
 .header-subnav {
   float: none;
   position: relative;
-  top: 4rem;
+  top: 2rem;
   text-align: center;
-  margin-bottom: 0;
-  margin-left: -5%; }
+  margin-bottom: 0px;
+  margin-left: 0%; }
   .header-subnav li {
     float: none;
     display: inline-block; }
     .header-subnav li a {
       padding: 1rem 3rem 0.75rem;
-      font-size: 2rem;
+      font-size: 1.2rem;
       color: grey;
       text-shadow: 1px 1px 2px lightgrey;
       text-transform: uppercase;
@@ -84,8 +115,8 @@ p {
   .header-subnav .dropdownli {
     display: block; }
     .header-subnav .dropdownli a {
-      text-transform: none;
-      font-size: 1.3rem; }
+      text-transform: uppercase;
+      font-size: 1.2rem; }
 
 body {
   margin: 0;

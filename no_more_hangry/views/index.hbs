@@ -1,21 +1,23 @@
-<div class="centerdiv">
-	<p>Welcome to {{title}}</p>
-	<div id="authentication">
-	<div class="centertext">
-		{{message}}
+<div class="large-centerdiv">
+	<div class="col-lg-4 col-sm-6 text-center">
+		<img class="img-circle img-responsive img-center img-border" src="../images/screenshot00.png" width="300px" height="200px">
+		<h3>Enter Your Zip Code</h3>
+		Click <b>Get Food</b> from the Menu bar and enter your zip code to see an entree available for order near you!
 	</div>
-	<form id="loginForm" action="" method="post" class="form-signin">
-	</form>
+	<div class="col-lg-4 col-sm-6 text-center">
+		<img class="img-circle img-responsive img-center img-border" src="../images/screenshot01.png" width="300px" height="200px">
+		<h3>Get Matched</h3>
+		You will be matched with a random entree based on your proximity and preferences (if you have set any). Here, you can view the price, food rating, and other details.
 	</div>
-	<div>
-		{{#if user}}
-			<button id='loginButton' style=display:none >Log In</button>
-			<button id='registerButton' style=display:none >Register</button>
-		{{else}}
-			<button id='loginButton' class= "btn btn-info">Log In</button>
-			<button id='registerButton' class= "btn btn-info">Register</button>
-		{{/if}}
+	<div class="col-lg-4 col-sm-6 text-center">
+		<img class="img-circle img-responsive img-center img-border" src="../images/screenshot02.png" width="300px" height="200px">
+		<h3>Randomize, Similar, or Order</h3>
+		Click <b>Randomize</b> to see another random entree. Click <b>Similar</b> to see an random entree of the same type. Finally, click <b>Order Now</b> when you are satisfied with the displayed entree.
+	</div>
+	<div class="col-lg-4 col-sm-6 text-center">
+		<img class="img-circle img-responsive img-center img-border" src="../images/screenshot03.png" width="300px" height="200px">
+		<h3>Confirm Your Order</h3>
+		Review your details and confirm your order. Congratulations! Your food is now on it's way.
 	</div>
 </div>
-<script src="/javascripts/authentication.js"></script>
 

@@ -1,7 +1,11 @@
 <div class="centerdiv">
   {{#if user}}
     {{#if noZip}}
-      Set zip
+      Enter your Zip Code to start!
+      <form id="zipForm" action="" method="post" class="form-signin">
+        <input type="text" name="inputZip" class="form-control" required placeholder="Zip Code">
+        <input type="submit" class="btn btn-info" name="submitZip" value="Go">
+      </form>
     {{else}}
       {{#if message}}
         <div class="centertext">
@@ -9,23 +13,30 @@
           Click <a href="/settings">here</a> to manage your preferences.
         </div>
       {{else}} 
-        <img class="img-circle" src={{imgPath}} width=300px height=300px>
+        <img class="img-circle" src={{imgPath}} width=290px height=290px>
       
         <div class="center">
           <div class="centertext">
             <h2 class="featurette-heading">{{food.name}}</h2>
           <div class="centertext">
-            <h2 class="featurette-heading">${{food.price}}</h2><br>
+            <h2 class="featurette-heading">${{food.price}}</h2>
             {{food.type}}<br>
             Rated {{food.rating}}/5 ({{food.numRatings}} ratings)<br>
             Viewed {{food.numViews}} times<br>
             Ordered {{food.numOrders}} times<br>
             <i>{{food.restaurant}}</i><br>
           </div>
+          <form id="refreshForm" action="" method="post" class="form-signin">
+            <input id='randomButton' type="submit" class= "btn btn-primary" style="display:inline" name="randomButton" value="Randomize">
+            <input id='similarButton' type="submit" class= "btn btn-info" style="display:inline" name="similarButton" value="Similar">
+            <input type="hidden" name="foodType" value={{food.type}}>
+            <input type="hidden" name="foodName" value="{{food.name}}">
+            <input type="hidden" name="foodPrice" value={{food.price}}>
+            <input type="hidden" name="foodId" value={{food._id}}>
+            <input type="hidden" name="foodImg" value={{food.imgPath}}>
 
-          <button id='randomButton' class= "btn btn-primary" style="display:inline" name="randomButton">Randomnize</button>
-          <button id='similarButton' class= "btn btn-info" style="display:inline" name="similarButton" value={{food.type}}>Similar</button>
-          <button id='orderButton' class= "btn btn-success" style="display:inline" name="orderButton" value={{food}}>Order Now</button>
+            <input id='orderButton' type="submit" class= "btn btn-success" style="display:inline" name="orderButton" value="Order Now">
+          </form>
         </div>
       {{/if}}
     {{/if}}

@@ -1,25 +1,28 @@
-<div class="centerdiv">
+<div class="large-centerdiv">
 	{{#if user}}
-	<div class="centertext">
-		<h2 class="featurette-heading">My Preferences</h2>
-	</div>
-		<div id="preferences">
-			{{#if user.maxPrice}}
-			<label>Price: Less than ${{user.maxPrice}}</label></br>
-			{{else}}
-			<label>Price: Not Set</label></br>
-			{{/if}}
-			{{#if user.minRating}}
-			<label>Rating: Greater than {{user.minRating}}/5</label></br>
-			{{else}}
-			<label>Rating: Not Set</label></br>
-			{{/if}}
+	<div class="col-lg-4 col-sm-6">
+		<div class="centertext">
+			<h2 class="featurette-heading">My Preferences</h2>
 		</div>
-		<form id="editform2" action="" method="post" class="form-signin">
-			<input id="price" type="hidden" value={{user.maxPrice}}></input>
-			<input id="rating" type="hidden" value={{user.minRating}}></input>
-			<input type="button" class="btn btn-info" id="editPreferences" value="Edit Preferences">
-		</form>
+			<div id="preferences">
+				{{#if user.maxPrice}}
+				<label>Price: Less than ${{user.maxPrice}}</label></br>
+				{{else}}
+				<label>Price: Not Set</label></br>
+				{{/if}}
+				{{#if user.minRating}}
+				<label>Rating: Greater than {{user.minRating}}/5</label></br>
+				{{else}}
+				<label>Rating: Not Set</label></br>
+				{{/if}}
+			</div>
+			<form id="editform2" action="" method="post" class="form-signin">
+				<input id="price" type="hidden" value={{user.maxPrice}}></input>
+				<input id="rating" type="hidden" value={{user.minRating}}></input>
+				<input type="button" class="btn btn-info" id="editPreferences" value="Edit Preferences">
+			</form>
+	</div>
+<div class="col-lg-4 col-sm-6">
 	<div class="centertext">
 		<h2 class="featurette-heading">My Account</h2>
 	</div>
@@ -44,4 +47,5 @@
 		{{/if}}
 
 	<script src="/javascripts/settings.js"></script>
+	</div>
 </div>

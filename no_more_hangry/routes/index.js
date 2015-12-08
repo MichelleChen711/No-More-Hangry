@@ -15,10 +15,14 @@ var User = mongoose.model('User');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  res.render('index', { title: 'No More Hangry', user:req.user});
+  res.render('index', {user:req.user});
 });
 
-router.post('/', function(req, res, next){
+router.get('/login', function(req,res,next){
+  res.render('login', {user:req.user, title: 'No More Hangry'}); 
+});
+
+router.post('/login', function(req, res, next){
   
   if(req.body.login != undefined){
     //do client side stuff: create sign in form
@@ -26,12 +30,11 @@ router.post('/', function(req, res, next){
     passport.authenticate('local', function(err,user) {
       if(user) {
         req.logIn(user, function(err) {
-          //res.redirect('/food');
           console.log("Logged in " + user);
           res.render('index', {user: user, title: 'No More Hangry'});
         });
       } else {
-        res.render('index', {title: 'No More Hangry', message: "Invalid username or password."});
+        res.render('login', {title: 'No More Hangry', message: "Invalid username or password."});
       }
     })(req, res, next);
   }
@@ -47,14 +50,13 @@ router.post('/', function(req, res, next){
         }),
         req.body.password, function(err,user){
       if(err){
-        res.render('index',{title: 'No More Hangry', message: err.message});
+        res.render('login',{title: 'No More Hangry', message: err.message});
         console.log(err);
       }
       else{
         passport.authenticate('local')(req,res,function(){
-          //res.redirect("/food");
           console.log(user);
-          res.render('index', {user: user, title: 'No More Hangry'});
+          res.render('index', {user: user});
         });
       }
     });
@@ -65,7 +67,7 @@ router.post('/', function(req, res, next){
 router.get('/logout', function(req,res,next){
   console.log("LOG out this user: " + req.user);
   req.logout();
-  res.redirect("/");
+  res.redirect("/login");
 });
 
 router.get('/about', function(req,res,next){
@@ -98,19 +100,20 @@ router.get('/food', function(req,res,next){
         maxPrice = req.user.maxPrice;
       }
      
-      FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,result){
-        if(result){
-          console.log("******",result);
-          res.render('food', {user: req.user, food:result, imgPath:result.imgPath});
+      FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,food){
+        if(food){
+          food.numViews++
+          food.save(function(err,food){
+            res.render('food', {user: req.user, food:food, imgPath:food.imgPath});
+          });
         }
         else{
           res.render('food', {message: "Sorry! We couldn't find anything that matches your preferences..."});
         }
       });
-    
     //No zip code set
     }else{
-      res.render('food',{noZip: "Zip code:"});
+      res.render('food',{noZip: true , user:req.user});
     }
   //No user  
   }else{
@@ -119,7 +122,68 @@ router.get('/food', function(req,res,next){
 });
 
 router.post('/food', function(req,res,next){
+  if(req.body.submitZip){
+    User.findOne({"_id":req.user._id},function(err,user){
+      user.zipCode = req.body.inputZip
+      user.save(function(err,user){
+        res.redirect("/food");
+      });
+    });
+  }
 
+  if(req.body.randomButton){
+    res.redirect("/food");
+  }
+  else if(req.body.similarButton){
+    
+    if(req.user){
+
+    var minRating = 0;
+    var maxPrice = 99.00;
+    var zipcode = 0;
+    var foodType = req.body.foodType;
+    //Has zipcode set
+    if(req.user.zipCode != undefined){
+      console.log("haszipcode");
+      zipcode = req.user.zipCode;
+
+      if(req.user.minRating != undefined){
+        console.log("has min rating");
+        minRating = req.user.minRating;
+      }
+      if(req.user.maxPrice != undefined){
+        console.log("has max price");
+        maxPrice = req.user.maxPrice;
+      }
+     
+        FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "type":foodType},function(err,food){
+          if(food){
+            food.numViews++
+            food.save(function(err,food){
+              res.render('food', {user: req.user, food:food, imgPath:food.imgPath});
+            });
+          }
+          else{
+            res.render('food', {message: "Sorry! We couldn't find anything that matches your preferences..."});
+          }
+        });
+      //No zip code set
+      }else{
+        res.render('food',{noZip: true , user:req.user});
+      }
+    //No user  
+    }else{
+      res.render('food');
+    }
+  }
+  else if(req.body.orderButton){
+    var tax = req.body.foodPrice * .08875;
+    tax = Math.round(tax * 100) / 100
+    var fee = 2.75;
+    var total = Number(req.body.foodPrice) + tax + fee;
+    total = Math.round(total * 100) / 100
+    res.render('order',{user:req.user, foodImg: req.body.foodImg, foodName:req.body.foodName, foodPrice:req.body.foodPrice, foodId:req.body.foodId, tax:tax, fee:fee, total:total});
+  }
 });
 /**var count= 0;
 router.get('/food', function(req,res,next){
@@ -233,12 +297,6 @@ router.post('/settings', function(req,res,next){
   }
 
 });
-
-
-
-
-
-
 
 
 module.exports = router;
