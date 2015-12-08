@@ -1,0 +1,18 @@
+<div class="centerdiv">
+	<p>Welcome to {{title}}</p>
+	<div id="authentication">
+		<div class="centertext">
+			{{message}}
+		</div>
+		<form id="loginForm" action="" method="post" class="form-signin">
+		</form>
+	</div>
+	{{#if user}}
+		<button id='loginButton' style=display:none >Log In</button>
+		<button id='registerButton' style=display:none >Register</button>
+	{{else}}
+		<button id='loginButton' class= "btn btn-info">Log In</button>
+		<button id='registerButton' class= "btn btn-info">Register</button>
+	{{/if}}
+</div>
+<script src="/javascripts/authentication.js"></script>
