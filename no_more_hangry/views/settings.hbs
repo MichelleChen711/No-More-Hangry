@@ -15,10 +15,20 @@
 				{{else}}
 				<label>Rating: Not Set</label></br>
 				{{/if}}
+				{{#if user.preferences}}
+					{{#each user.preferences}}
+						<img src="../images/{{this}}.png" width="80px" height="80px">
+					{{/each}}
+				{{else}}
+					<label>Food Preferences: None</label></br>
+				{{/if}}
 			</div>
 			<form id="editform2" action="" method="post" class="form-signin">
 				<input id="price" type="hidden" value={{user.maxPrice}}></input>
 				<input id="rating" type="hidden" value={{user.minRating}}></input>
+				{{#each user.preferences}}
+					<input id="{{this}}pref" type="hidden"></input>
+				{{/each}}
 				<input type="button" class="btn btn-info" id="editPreferences" value="Edit Preferences">
 			</form>
 	</div>
@@ -31,7 +41,7 @@
 		 	<label>Last Name: {{user.lastname}} </label></br>
 		 	<label>Address: {{user.address}}</label></br>
 		 	<label>Zip Code: {{user.zipCode}}</label></br>
-		 	<label>Payment Type: {{user.paymentType}}</label></br>
+		 	<label>Payment Method: {{user.paymentType}}</label></br>
 		</div>
 		<form id="editform1" action="" method="post" class="form-signin">
 			<input id="fname" type="hidden" value={{user.firstname}}></input>

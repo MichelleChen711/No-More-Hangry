@@ -13,27 +13,28 @@
           Click <a href="/settings">here</a> to manage your preferences.
         </div>
       {{else}} 
-        <img class="img-circle" src={{imgPath}} width=290px height=290px>
+        <img id="fImg" class="img-circle" src={{imgPath}} width=290px height=290px>
       
         <div class="center">
           <div class="centertext">
-            <h2 class="featurette-heading">{{food.name}}</h2>
-          <div class="centertext">
-            <h2 class="featurette-heading">${{food.price}}</h2>
-            {{food.type}}<br>
-            Rated {{food.rating}}/5 ({{food.numRatings}} ratings)<br>
-            Viewed {{food.numViews}} times<br>
-            Ordered {{food.numOrders}} times<br>
-            <i>{{food.restaurant}}</i><br>
+            <h2 id="fName"class="featurette-heading">{{food.name}}</h2>
+          <div id="foodDiv" class="centertext">
+            <h2 id="fPrice" class="featurette-heading">${{food.price}}</h2>
+            <label id="fType">{{food.type}}</label><br>
+            <label id="fRate">Rated {{food.rating}}/5 ({{food.numRatings}} ratings)</label><br>
+            <label id="fView">Viewed {{food.numViews}} times</label><br>
+            <label id="fOrder">Ordered {{food.numOrders}} times</label><br>
+            <i><label id="fRestaurant">{{food.restaurant}}</label></i><br>
           </div>
           <form id="refreshForm" action="" method="post" class="form-signin">
+
             <input id='randomButton' type="submit" class= "btn btn-primary" style="display:inline" name="randomButton" value="Randomize">
             <input id='similarButton' type="submit" class= "btn btn-info" style="display:inline" name="similarButton" value="Similar">
-            <input type="hidden" name="foodType" value={{food.type}}>
-            <input type="hidden" name="foodName" value="{{food.name}}">
-            <input type="hidden" name="foodPrice" value={{food.price}}>
-            <input type="hidden" name="foodId" value={{food._id}}>
-            <input type="hidden" name="foodImg" value={{food.imgPath}}>
+            <input id="fType-input" type="hidden" name="foodType" value={{food.type}}>
+            <input id="fName-input" type="hidden" name="foodName" value="{{food.name}}">
+            <input id="fPrice-input" type="hidden" name="foodPrice" value={{food.price}}>
+            <input id="fId-input" type="hidden" name="foodId" value={{food._id}}>
+            <input id="fImg-input" type="hidden" name="foodImg" value={{food.imgPath}}>
 
             <input id='orderButton' type="submit" class= "btn btn-success" style="display:inline" name="orderButton" value="Order Now">
           </form>
@@ -45,4 +46,5 @@
       Please log in or register first.
     </div>
   {{/if}}
+  <script src="/javascripts/food.js"></script>
 </div>

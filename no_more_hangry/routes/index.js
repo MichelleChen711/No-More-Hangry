@@ -44,11 +44,9 @@ router.post('/login', function(req, res, next){
     User.register(new User({
         username:req.body.username,
         firstname: req.body.fname,
-        lastname: req.body.lname,
-        zipCode: req.body.zipCode,
-        address: req.body.address,
-        }),
-        req.body.password, function(err,user){
+        lastname: req.body.lname
+    }),
+    req.body.password, function(err,user){
       if(err){
         res.render('login',{title: 'No More Hangry', message: err.message});
         console.log(err);
@@ -179,7 +177,7 @@ router.post('/food', function(req,res,next){
   else if(req.body.orderButton){
     var tax = req.body.foodPrice * .08875;
     tax = Math.round(tax * 100) / 100
-    var fee = 2.75;
+    var fee = 2.25;
     var total = Number(req.body.foodPrice) + tax + fee;
     total = Math.round(total * 100) / 100
     res.render('order',{user:req.user, foodImg: req.body.foodImg, foodName:req.body.foodName, foodPrice:req.body.foodPrice, foodId:req.body.foodId, tax:tax, fee:fee, total:total});
@@ -263,9 +261,43 @@ router.post('/add', function(req,res){
 });
 
 router.get('/settings', function(req,res,next){
+  console.log(req.user);
   res.render("settings", {user:req.user});
 });
 
+router.get('/api/foods', function(req,res,next){
+  var minRating = 0;
+  var maxPrice = 99.00;
+  var zipcode = req.user.zipCode;
+  console.log(req.user);
+  if(req.user){
+    if(req.user.minRating){
+      minRating = req.user.minRating;
+    }if(req.user.maxPrice){
+      maxPrice = req.user.maxPrice;
+    }
+    FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,food){
+      res.send(food);
+    });
+  }
+});
+
+function removeElem(array, search_term){
+  for (var i=array.length-1; i>=0; i--) {
+    if (array[i] === search_term) {
+        array.splice(i, 1);
+    }
+  }
+}
+function checkElem(array, search_term){
+  for (var i=array.length-1; i>=0; i--){
+    if (array[i] === search_term){
+      console.log(array[i]);
+      return true;
+    }
+  }
+  return false;
+}
 router.post('/settings', function(req,res,next){
   if(req.body.editAccount){
     User.findOne({"_id":req.user._id},function(err,user){
@@ -283,20 +315,61 @@ router.post('/settings', function(req,res,next){
       });
     });
   }
-  if(req.body.editPreferences){
+ if(req.body.editPreferences){
     User.findOne({"_id":req.user._id},function(err,user){
       user.maxPrice = req.body.maxPrice;
       user.minRating = req.body.minRating;
+      user.preferences.length = 0;
+      if(req.body.American && !(checkElem(user.preferences, "American"))){
+        user.preferences.push("American");
+      }else{
+        removeElem(user.preferences,"American");
+      }if(req.body.Chinese){
+        user.preferences.push("Chinese");
+      }else{
+        removeElem(user.preferences,"Chinese");
+      }if(req.body.Indian){
+        user.preferences.push("Indian");
+      }else{
+        removeElem(user.preferences,"Indian");
+      }if(req.body.Italian){
+        user.preferences.push("Italian");
+      }else{
+        removeElem(user.preferences,"Italian");
+      }if(req.body.Japanese){
+        user.preferences.push("Japanese");
+      }else{
+        removeElem(user.preferences,"Japanese");
+      }if(req.body.Korean){
+        user.preferences.push("Korean");
+      }else{
+        removeElem(user.preferences,"Korean");
+      }if(req.body.LatinAmerican){
+        user.preferences.push("LatinAmerican");
+      }else{
+        removeElem(user.preferences,"LatinAmerican");
+      }if(req.body.MiddleEastern){
+        user.preferences.push("MiddleEastern");
+      }else{
+        removeElem(user.preferences,"MiddleEastern");
+      }if(req.body.Thai){
+        user.preferences.push("Thai");
+      }else{
+        removeElem(user.preferences,"Thai");
+      }
+      console.log(user.preferences);
       user.save(function(err,user){
         if(!err){
           console.log(user);
-          res.redirect("/settings");
+          res.render("settings", {user:user}); 
         }
       });
     });
   }
-
 });
 
+router.post('/order', function(req,res,next){
+  res.render("orderHistory");
+});
 
 module.exports = router;

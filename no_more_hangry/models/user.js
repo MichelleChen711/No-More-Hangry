@@ -11,7 +11,8 @@ var User = new mongoose.Schema({
     paymentType: String,
     maxPrice: Number,
     minRating: Number,
-    orderedFood: Array
+    orderedFood: Array,
+    preferences: Array
 });
 
 User.plugin(passportLocalMongoose);

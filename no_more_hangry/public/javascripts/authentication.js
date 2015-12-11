@@ -1,5 +1,10 @@
-document.getElementById('loginButton').addEventListener('click', loginClick);
-document.getElementById('registerButton').addEventListener('click', registerClick);
+document.addEventListener("DOMContentLoaded",function(){
+	document.getElementById('loginButton').addEventListener('click', loginClick);
+	document.getElementById('registerButton').addEventListener('click', registerClick);
+});
+
+//document.getElementById('loginButton').addEventListener('click', loginClick);
+//document.getElementById('registerButton').addEventListener('click', registerClick);
 
 function loginClick(event) {
 	console.log("login");

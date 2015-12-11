@@ -21,10 +21,6 @@ var Restaurant = require('./models/restaurant');
 var FoodItem = require('./models/foodItem');
 var User = require('./models/user');
 var Order = require('./models/order');
-//var Restaurant = mongoose.model('Restaurant');
-//var FoodItem = mongoose.model('FoodItem');
-//var User = mongoose.model('User');
-//var Order = mongoose.model('Order');
 
 var http = require('http').Server(app);
 var port = process.env.PORT || 3000;
@@ -55,8 +51,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://localhost:10111/hangrydb');
-//mongoose.connect('mongodb://localhost/hangrydb');
+//mongoose.connect('mongodb://localhost:10111/hangrydb');
+mongoose.connect('mongodb://localhost/hangrydb');
 
 app.use(function(req, res, next){
   res.locals.user = req.user;

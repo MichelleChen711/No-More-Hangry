@@ -50,8 +50,163 @@ function editPreferences(event){
 	submit.name = "editPreferences";
 	submit.className = "btn btn-success";
 
+	var div1 = document.createElement('div');
+	div1.className = "checkbox-inline";
+	div1.width = 110;
+	var p1 = document.createElement('input');
+	p1.className = "checkbox-icon"
+	p1.type = "checkbox";
+	p1.name = "American";
+	if(document.getElementById("Americanpref")){
+		p1.checked = true;
+	}
+	var icon1 = document.createElement('img');
+	icon1.src = "../images/American.png";
+	icon1.width = 80;
+	icon1.height = 80;
+	div1.appendChild(p1);
+	div1.appendChild(icon1);
+
+	var div2 = document.createElement('div');
+	div2.className = "checkbox-inline";
+	var p2 = document.createElement('input');
+	p2.className = "checkbox-icon"
+	p2.type = "checkbox";
+	p2.name = "Chinese";
+	if(document.getElementById("Chinesepref")){
+		p2.checked = true;
+	}
+	var icon2 = document.createElement('img');
+	icon2.src = "../images/Chinese.png";
+	icon2.width = 80;
+	icon2.height = 80;
+	div2.appendChild(p2);
+	div2.appendChild(icon2);
+
+	var div3 = document.createElement('div');
+	div3.className = "checkbox-inline";
+	var p3 = document.createElement('input');
+	p3.className = "checkbox-icon"
+	p3.type = "checkbox";
+	p3.name = "Indian";
+	if(document.getElementById("Indianpref")){
+		p3.checked = true;
+	}
+	var icon3 = document.createElement('img');
+	icon3.src = "../images/Indian.png";
+	icon3.width = 80;
+	icon3.height = 80;
+	div3.appendChild(p3);
+	div3.appendChild(icon3);
+
+	var div4 = document.createElement('div');
+	div4.className = "checkbox-inline";
+	var p4 = document.createElement('input');
+	p4.className = "checkbox-icon"
+	p4.type = "checkbox";
+	p4.name = "Italian";
+	if(document.getElementById("Italianpref")){
+		p4.checked = true;
+	}
+	var icon4 = document.createElement('img');
+	icon4.src = "../images/Italian.png";
+	icon4.width = 80;
+	icon4.height = 80;
+	div4.appendChild(p4);
+	div4.appendChild(icon4);
+
+	var div5 = document.createElement('div');
+	div5.className = "checkbox-inline";
+	var p5 = document.createElement('input');
+	p5.className = "checkbox-icon"
+	p5.type = "checkbox";
+	p5.name = "Japanese";
+	if(document.getElementById("Japanesepref")){
+		p5.checked = true;
+	}
+	var icon5 = document.createElement('img');
+	icon5.src = "../images/Japanese.png";
+	icon5.width = 80;
+	icon5.height = 80;
+	div5.appendChild(p5);
+	div5.appendChild(icon5);
+
+	var div6 = document.createElement('div');
+	div6.className = "checkbox-inline";
+	var p6 = document.createElement('input');
+	p6.className = "checkbox-icon"
+	p6.type = "checkbox";
+	p6.name = "Korean";
+	if(document.getElementById("Koreanpref")){
+		p6.checked = true;
+	}
+	var icon6 = document.createElement('img');
+	icon6.src = "../images/Korean.png";
+	icon6.width = 80;
+	icon6.height = 80;
+	div6.appendChild(p6);
+	div6.appendChild(icon6);
+
+	var div7 = document.createElement('div');
+	div7.className = "checkbox-inline";
+	var p7 = document.createElement('input');
+	p7.className = "checkbox-icon"
+	p7.type = "checkbox";
+	p7.name = "LatinAmerican";
+	if(document.getElementById("LatinAmericanpref")){
+		p7.checked = true;
+	}
+	var icon7 = document.createElement('img');
+	icon7.src = "../images/LatinAmerican.png";
+	icon7.width = 80;
+	icon7.height = 80;
+	div7.appendChild(p7);
+	div7.appendChild(icon7);
+
+	var div8 = document.createElement('div');
+	div8.className = "checkbox-inline";
+	var p8 = document.createElement('input');
+	p8.className = "checkbox-icon"
+	p8.type = "checkbox";
+	p8.name = "MiddleEastern";
+	if(document.getElementById("MiddleEasternpref")){
+		p8.checked = true;
+	}
+	var icon8 = document.createElement('img');
+	icon8.src = "../images/MiddleEastern.png";
+	icon8.width = 80;
+	icon8.height = 80;
+	div8.appendChild(p8);
+	div8.appendChild(icon8);
+
+	var div9 = document.createElement('div');
+	div9.className = "checkbox-inline";
+	var p9 = document.createElement('input');
+	p9.className = "checkbox-icon"
+	p9.type = "checkbox";
+	p9.name = "Thai";
+	if(document.getElementById("Thaipref")){
+		p9.checked = true;
+	}
+	var icon9 = document.createElement('img');
+	icon9.src = "../images/Thai.png";
+	icon9.width = 80;
+	icon9.height = 80;
+	div9.appendChild(p9);
+	div9.appendChild(icon9);
+
 	document.getElementById("editform2").appendChild(price);
 	document.getElementById("editform2").appendChild(rating);
+	document.getElementById("editform2").appendChild(div1);
+	document.getElementById("editform2").appendChild(div2);
+	document.getElementById("editform2").appendChild(div3);
+	document.getElementById("editform2").appendChild(div4);
+	document.getElementById("editform2").appendChild(div5);
+	document.getElementById("editform2").appendChild(div6);
+	document.getElementById("editform2").appendChild(div7);
+	document.getElementById("editform2").appendChild(div8);
+	document.getElementById("editform2").appendChild(div9);
+
 	document.getElementById("editform2").appendChild(submit);
 
 
