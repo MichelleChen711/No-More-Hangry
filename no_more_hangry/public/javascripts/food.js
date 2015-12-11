@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function(){
 	var randomize = document.getElementById('randomButton');
 	randomize.addEventListener("click", function(evt){
 		evt.preventDefault();
-		var url = "http://localhost:3000/api/foods";
+		//var url = "http://localhost:3000/api/foods";
+		var url = "http://localhost:10111/api/foods";
 		var req = new XMLHttpRequest();
 		req.open('GET', url, true);
 		console.log('clicked');
