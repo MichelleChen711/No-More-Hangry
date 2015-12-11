@@ -38,10 +38,10 @@ document.addEventListener("DOMContentLoaded", function(){
 				}
 				var fRate = document.getElementById("fRate");
 				if(food == "rating"){
-					fRate.innerHTML = entry;
+					fRate.innerHTML = "Rated " + entry +"/5";
 				}
 				if(food == "numRatings"){
-					fRate.innerHTML = fRate.innerHTML + "(" + entry + " ratings)"
+					fRate.innerHTML = fRate.innerHTML + " (" + entry + " ratings)"
 				}
 				var fView = document.getElementById("fView");
 				if(food == "numViews"){

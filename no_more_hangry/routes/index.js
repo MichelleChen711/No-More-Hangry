@@ -83,7 +83,7 @@ router.get('/food', function(req,res,next){
     var minRating = 0;
     var maxPrice = 99.00;
     var zipcode = 0;
-    
+    var preferences = req.user.preferences;
     //Has zipcode set
     if(req.user.zipCode != undefined){
       console.log("haszipcode");
@@ -98,7 +98,7 @@ router.get('/food', function(req,res,next){
         maxPrice = req.user.maxPrice;
       }
      
-      FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,food){
+      FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "type":{$in: preferences}},function(err,food){
         if(food){
           food.numViews++
           food.save(function(err,food){
@@ -153,6 +153,7 @@ router.post('/food', function(req,res,next){
         console.log("has max price");
         maxPrice = req.user.maxPrice;
       }
+
      
         FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "type":foodType},function(err,food){
           if(food){
@@ -269,6 +270,8 @@ router.get('/api/foods', function(req,res,next){
   var minRating = 0;
   var maxPrice = 99.00;
   var zipcode = req.user.zipCode;
+  var preferences = req.user.preferences;
+  console.log(req.user.preferences);
   console.log(req.user);
   if(req.user){
     if(req.user.minRating){
@@ -276,8 +279,10 @@ router.get('/api/foods', function(req,res,next){
     }if(req.user.maxPrice){
       maxPrice = req.user.maxPrice;
     }
-    FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,food){
-      res.send(food);
+    FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "type":{ $in: preferences}},function(err,food){
+      if(food){
+        res.send(food);
+      }
     });
   }
 });
@@ -316,52 +321,75 @@ router.post('/settings', function(req,res,next){
     });
   }
  if(req.body.editPreferences){
+  req.user.preferences = [];
+  
     User.findOne({"_id":req.user._id},function(err,user){
       user.maxPrice = req.body.maxPrice;
       user.minRating = req.body.minRating;
-      user.preferences.length = 0;
-      if(req.body.American && !(checkElem(user.preferences, "American"))){
-        user.preferences.push("American");
+      if(req.body.American){
+        if(!checkElem(user.preferences,"American")){
+          user.preferences.push("American");
+        }
       }else{
         removeElem(user.preferences,"American");
-      }if(req.body.Chinese){
-        user.preferences.push("Chinese");
+      }
+      if(req.body.Chinese){
+        if(!checkElem(user.preferences,"Chinese")){
+          user.preferences.push("Chinese");
+        }
       }else{
         removeElem(user.preferences,"Chinese");
-      }if(req.body.Indian){
-        user.preferences.push("Indian");
+      }
+      if(req.body.Indian){
+        if(!checkElem(user.preferences,"Indian")){
+          user.preferences.push("Indian");
+        }
       }else{
         removeElem(user.preferences,"Indian");
       }if(req.body.Italian){
-        user.preferences.push("Italian");
+        if(!checkElem(user.preferences,"Italian")){
+          user.preferences.push("Italian");
+        }
       }else{
         removeElem(user.preferences,"Italian");
       }if(req.body.Japanese){
-        user.preferences.push("Japanese");
+        if(!checkElem(user.preferences,"Japanese")){
+          user.preferences.push("Japanese");
+        }
       }else{
         removeElem(user.preferences,"Japanese");
       }if(req.body.Korean){
-        user.preferences.push("Korean");
+        if(!checkElem(user.preferences,"Korean")){
+          user.preferences.push("Korean");
+        }
       }else{
         removeElem(user.preferences,"Korean");
       }if(req.body.LatinAmerican){
-        user.preferences.push("LatinAmerican");
+        if(!checkElem(user.preferences,"LatinAmerican")){
+          user.preferences.push("LatinAmerican");
+        }
       }else{
         removeElem(user.preferences,"LatinAmerican");
       }if(req.body.MiddleEastern){
-        user.preferences.push("MiddleEastern");
+        if(!checkElem(user.preferences,"MiddleEastern")){
+          user.preferences.push("MiddleEastern");
+        }
       }else{
         removeElem(user.preferences,"MiddleEastern");
       }if(req.body.Thai){
-        user.preferences.push("Thai");
+        if(!checkElem(user.preferences,"Thai")){
+          user.preferences.push("Thai");
+        }
       }else{
         removeElem(user.preferences,"Thai");
       }
+
       console.log(user.preferences);
       user.save(function(err,user){
         if(!err){
           console.log(user);
-          res.render("settings", {user:user}); 
+          res.render("settings", {user: user}); 
+          //res.redirect("/settings");
         }
       });
     });
