@@ -77,13 +77,14 @@ router.get('/food', function(req,res,next){
   /**FoodItem.remove(function(err){
     console.log("done");
   });**/
-
+  console.log("FOOD PAGE CALLED");
   if(req.user){
 
     var minRating = 0;
     var maxPrice = 99.00;
     var zipcode = 0;
     var preferences = req.user.preferences;
+    console.log("PREFERENCES:" , preferences);
     //Has zipcode set
     if(req.user.zipCode != undefined){
       console.log("haszipcode");
@@ -97,18 +98,34 @@ router.get('/food', function(req,res,next){
         console.log("has max price");
         maxPrice = req.user.maxPrice;
       }
-     
-      FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "type":{$in: preferences}},function(err,food){
-        if(food){
-          food.numViews++
-          food.save(function(err,food){
-            res.render('food', {user: req.user, food:food, imgPath:food.imgPath});
-          });
-        }
-        else{
-          res.render('food', {message: "Sorry! We couldn't find anything that matches your preferences..."});
-        }
-      });
+      if(typeof preferences !== 'undefined' && preferences.length > 0){
+        console.log("Found preferences. length of preferences is", preferences.length);
+        FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "type":{$in: preferences}},function(err,food){
+          if(food){
+            food.numViews++
+            food.save(function(err,food){
+              res.render('food', {user: req.user, food:food, imgPath:food.imgPath});
+            });
+          }
+          else{
+            res.render('food', {message: "Sorry! We couldn't find anything that matches your preferences..."});
+          }
+        });
+      }
+      else{
+        console.log("no preferences");
+        FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,food){
+          if(food){
+            food.numViews++
+            food.save(function(err,food){
+              res.render('food', {user: req.user, food:food, imgPath:food.imgPath});
+            });
+          }
+          else{
+            res.render('food', {message: "Sorry! We couldn't find anything that matches your preferences..."});
+          }
+        });
+      }
     //No zip code set
     }else{
       res.render('food',{noZip: true , user:req.user});
@@ -184,49 +201,6 @@ router.post('/food', function(req,res,next){
     res.render('order',{user:req.user, foodImg: req.body.foodImg, foodName:req.body.foodName, foodPrice:req.body.foodPrice, foodId:req.body.foodId, tax:tax, fee:fee, total:total});
   }
 });
-/**var count= 0;
-router.get('/food', function(req,res,next){
-  var rand = Math.random();
-  console.log(rand);
-  var minRating = 0;
-  var maxPrice = 20.00;
-  var zipcode = 10003;
-  var foodArray = [];
-
-  
-  FoodItem.find({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,foods,count){
-    console.log(foods);
-    for
-  });
-
-
-  FoodItem.findOne({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "random":{"$gte":rand} },function(err,food,count){
-    if(count<1){
-        count++;
-        console.log(food.random);
-        food.numViews ++;
-        food.save(function(err,food,count){
-          res.render('food', {food: food, imgPath: food.imgPath});
-        });
-      }
-    else{
-      FoodItem.findOne({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "random":{"$gte":rand} },function(err,food,count){
-        if(food){
-          count=0;
-          console.log(food.random);
-          food.numViews ++;
-          food.save(function(err,food,count){
-            res.render('food', {food: food, imgPath: food.imgPath});
-          });
-        }
-        else{
-          res.redirect("/food");
-        }
-      });
-    } 
-  });
-});
-**/
 
 router.get('/add', function(req,res,next){
   res.render('add', {title: "Add to DB"});
@@ -279,11 +253,26 @@ router.get('/api/foods', function(req,res,next){
     }if(req.user.maxPrice){
       maxPrice = req.user.maxPrice;
     }
-    FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "type":{ $in: preferences}},function(err,food){
-      if(food){
-        res.send(food);
-      }
-    });
+    if(typeof preferences !== 'undefined' && preferences.length > 0){
+      FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode, "type":{ $in: preferences}},function(err,food){
+        if(food){
+          food.numViews++
+          food.save(function(err,food){
+            res.send(food);
+          });
+        }
+      });
+    }
+    else{
+      FoodItem.findOneRandom({"rating":{"$gte":minRating},"price":{"$lte":maxPrice}, "zipCode": zipcode},function(err,food){
+        if(food){
+          food.numViews++
+          food.save(function(err,food){
+            res.send(food);
+          });
+        }
+      });
+    }
   }
 });
 
